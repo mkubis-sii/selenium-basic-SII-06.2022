@@ -12,9 +12,17 @@ public class SliderTest extends TestBase {
 
         WebElement handle = driver.findElement(By.id("custom-handle"));
 
-        handle.sendKeys(Keys.ARROW_RIGHT);
+        moveSliderTo(50);
 
-        Assert.assertEquals(handle.getText(), "1");
+
+        Assert.assertEquals(handle.getText(), "51");
+    }
+
+
+    public void moveSliderTo(int expectedValue) {
+        for (int i = 0; i < expectedValue; i++) {
+            driver.findElement(By.id("custom-handle")).sendKeys(Keys.ARROW_RIGHT);
+        }
     }
 
 }
