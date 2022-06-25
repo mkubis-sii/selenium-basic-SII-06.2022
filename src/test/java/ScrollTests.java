@@ -1,4 +1,6 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 public class ScrollTests extends TestBase {
@@ -7,9 +9,24 @@ public class ScrollTests extends TestBase {
     public void shouldScrollToBtn() {
         driver.get("https://seleniumui.moderntester.pl/high-site.php");
 
-        // przy pomocy klasy action
-        // zrobic scroll o X pikseli w dol, aby pokazal sie przycisk
+        scrollUntilVisible(By.id("scroll-button"));
+    }
 
-        driver.findElement(By.id("scroll-button")).click();
+    public void scrollUntilVisible(By by) {
+        while (!isDisplayed(by)) {
+            new Actions(driver).scrollByAmount(0, 100).perform();
+            //tutaj by sie przydalo
+            // sprawdzenie czy nie zjechalismy
+            // do konca strony
+        }
+
+    }
+
+    public boolean isDisplayed(By by) {
+        try {
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
