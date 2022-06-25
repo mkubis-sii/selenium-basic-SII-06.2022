@@ -35,4 +35,23 @@ public class LoadingBarTests extends TestBase {
         WebElement progressBarLbl = driver.findElement(By.className("progress-label"));
         wait.until(ExpectedConditions.textToBePresentInElement(progressBarLbl, "Complete!"));
     }
+
+    @Test
+    public void shouldWaitForLoadingBarAttribute() {
+        driver.get("https://seleniumui.moderntester.pl/progressbar.php");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.attributeContains(By.className("ui-progressbar-value"),
+                "class", "ui-progressbar-complete"));
+    }
+
+    @Test
+    public void shouldWaitForLoadingBarAttribute2() {
+        driver.get("https://seleniumui.moderntester.pl/progressbar.php");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement progressBar = driver.findElement(By.className("ui-progressbar-value"));
+        wait.until(ExpectedConditions.attributeContains(progressBar,
+                "class", "ui-progressbar-complete"));
+    }
 }
