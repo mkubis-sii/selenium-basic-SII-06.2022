@@ -4,9 +4,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
-public class FormTest extends TestBase{
+public class FormTest extends TestBase {
 
     @Test
     public void shouldFillFormWithSuccess() throws InterruptedException {
@@ -26,17 +27,17 @@ public class FormTest extends TestBase{
 
         driver.findElement(By.id("gridCheckManulTester")).click();
 
-        // tutaj uzupelniamy pozostale pola form
-
 
         Select selectContinents = new Select(driver.findElement(By.id("selectContinents")));
         selectContinents.selectByValue("europe");
 
-        // tutaj dodac obs selekcta 'selenium commands
+        Select selectSeleniumCommands = new Select(driver.findElement(By.id("selectSeleniumCommands")));
+        selectSeleniumCommands.selectByIndex(2);
 
 
+        File file = new File("src/main/resources/file.txt");
+        driver.findElement(By.id("chooseFile")).sendKeys(file.getAbsolutePath());
 
-        //
         driver.findElement(By.className("btn-primary")).click();
 
         String validationMsg = driver.findElement(By.id("validator-message")).getText();
