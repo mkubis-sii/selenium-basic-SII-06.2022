@@ -23,10 +23,23 @@ public class AlertTests extends TestBase {
 
     @Test
     public void shouldFillPromptAlert() {
+        driver.findElement(By.id("prompt-alert")).click();
+
+        driver.switchTo().alert().sendKeys("Lord Vader");
+        driver.switchTo().alert().accept();
+
+        String alertMsg = driver.findElement(By.id("prompt-label")).getText();
+        Assert.assertEquals(alertMsg, "Hello Lord Vader! How are you today?");
     }
 
 
     @Test
     public void shouldDismissAlert() {
+        driver.findElement(By.id("confirm-alert")).click();
+
+        driver.switchTo().alert().dismiss();
+
+        String alertMsg = driver.findElement(By.id("confirm-label")).getText();
+        Assert.assertEquals(alertMsg, "You pressed Cancel!");
     }
 }
