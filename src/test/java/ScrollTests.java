@@ -8,7 +8,8 @@ public class ScrollTests extends TestBase {
         driver.get("https://seleniumui.moderntester.pl/high-site.php");
 
         // przy pomocy klasy action
-        // zrobic scroll o X pikeli w dol, aby pokazal sie przycisk
+        // zrobic scroll o X pikseli w dol, aby pokazal sie przycisk
+
         driver.findElement(By.id("scroll-button")).click();
     }
 }
