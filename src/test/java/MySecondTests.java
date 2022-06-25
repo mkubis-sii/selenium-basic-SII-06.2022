@@ -19,15 +19,16 @@ public class MySecondTests {
         Assert.assertEquals(add(2,3), 5);
     }
 
+    @Test
+    public void shouldMultiplyTwoNumbers(){
+        Assert.assertEquals(multiply(2,3), 6);
+    }
 
     public int add(int a, int b) {
         return a + b;
     }
 
     public int multiply(int a, int b) {
-        return a * b;
+        return a * b * b;
     }
-
-
-
 }
