@@ -16,13 +16,10 @@ public class TableTest extends TestBase {
         Assert.assertTrue(rows.size() > 0);
 
         for (WebElement row : rows) {
-            String heightV1 = row.findElement(By.xpath("td[4]")).getText();
-            String heightV2 = row.findElements(By.cssSelector("td")).get(3).getText();
+            String peak = row.findElements(By.cssSelector("td")).get(0).getText();
 
-            // "3405" -> 3405
-            int height = Integer.parseInt(heightV1);
-
-            //wypisac wszystkie dane o gorach, ale tych wyzszych niz 4000m
+            int height = Integer.parseInt(row.findElement(By.xpath("td[4]")).getText());
+            System.out.println(peak + height);
         }
 
     }
