@@ -50,4 +50,6 @@ public class FormPage {
     public void selectContinent(String continent) {
         new Select(selectContinents).selectByValue(continent);
     }
+
+
 }

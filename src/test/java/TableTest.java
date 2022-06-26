@@ -18,7 +18,11 @@ public class TableTest extends TestBase {
         for (WebElement row : rows) {
             String peak = row.findElements(By.cssSelector("td")).get(0).getText();
 
+            // "5" -> 5
             int height = Integer.parseInt(row.findElement(By.xpath("td[4]")).getText());
+
+            // 5 -> "5"
+            //String numberAsText = String.valueOf(5);
             System.out.println(peak + height);
         }
 
