@@ -17,6 +17,9 @@ public class TestBase {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        // ponizsza opcja uruchamia testy w trybie chroma
+        // bez UI
+        // options.addArguments("--headless");
 
         driver = new ChromeDriver(options);
     }
