@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.RowPage;
+import pages.TablePage;
 
 import java.util.List;
 
@@ -24,6 +26,20 @@ public class TableTest extends TestBase {
             // 5 -> "5"
             //String numberAsText = String.valueOf(5);
             System.out.println(peak + height);
+        }
+
+    }
+
+    @Test
+    public void shouldPrintPeaksOver4000m2() {
+        driver.get("https://seleniumui.moderntester.pl/table.php");
+
+        List<RowPage> allMountains = new TablePage(driver).getAllMountains();
+
+        Assert.assertTrue(allMountains.size() > 0);
+
+        for (RowPage rowPage : allMountains) {
+            System.out.println(rowPage.getPeak() + rowPage.getHeight());
         }
 
     }

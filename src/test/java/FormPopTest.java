@@ -14,17 +14,17 @@ public class FormPopTest extends TestBase {
 
         FormPage formPage = new FormPage(driver);
 
-        formPage.setFirstName("Jan");
-        formPage.setLastName("Kowalski");
-        formPage.setEmail("j.k@w.pl");
-        formPage.setAge(30);
-        formPage.selectRandomProfession();
-        formPage.selectRandomExperience();
-        formPage.selectGender(Gender.MALE);
-        formPage.selectContinent("europe");
-        formPage.selectSeleniumCommand("browser-commands");
-        formPage.uploadFile(file);
-        formPage.submitForm();
+        formPage.setFirstName("Jan")
+                .setLastName("Kowalski")
+                .setEmail("j.k@w.pl")
+                .setAge(30)
+                .selectRandomProfession()
+                .selectRandomExperience()
+                .selectGender(Gender.MALE)
+                .selectContinent("europe")
+                .selectSeleniumCommand("browser-commands")
+                .uploadFile(file)
+                .submitForm();
 
         Assert.assertEquals(formPage.getValidationMsg(), "Form send with success");
 
