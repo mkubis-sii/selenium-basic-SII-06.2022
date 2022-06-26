@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 public class FormTest extends TestBase {
 
@@ -23,7 +24,7 @@ public class FormTest extends TestBase {
         driver.findElements(By.name("gridRadiosSex")).get(0).click();
 
         List<WebElement> experience = driver.findElements(By.name("gridRadiosExperience"));
-        experience.get(3).click();
+        getRandomElement(experience).click();
 
         driver.findElement(By.id("gridCheckManulTester")).click();
 
@@ -42,5 +43,10 @@ public class FormTest extends TestBase {
 
         String validationMsg = driver.findElement(By.id("validator-message")).getText();
         Assert.assertEquals(validationMsg, "Form send with success");
+    }
+
+    public WebElement getRandomElement(List<WebElement> elements) {
+        Random rnd = new Random();
+        return elements.get(rnd.nextInt(elements.size()));
     }
 }
